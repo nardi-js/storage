@@ -10,10 +10,10 @@ export const createSeassionClient = async () => {
     .setEndpoint(appwriteConfig.endpointUrl)
     .setProject(appwriteConfig.projectId);
 
-  const seassion = (await cookies()).get("appwrite-session");
-  if (!seassion || !seassion.value) throw new Error("No session");
+  const session = (await cookies()).get("appwrite-session");
+  if (!session || !session.value) throw new Error("No session");
 
-  client.setSession(sessionStorage.value);
+  client.setSession(session.value);
 
   return {
     get account() {
