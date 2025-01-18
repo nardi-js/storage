@@ -17,7 +17,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { createAccount, signInUser } from "@/lib/action/user.actions";
+import { createAccount, signInUser } from "@/lib/actions/user.actions";
 
 import OTPModal from "./OTPModal";
 

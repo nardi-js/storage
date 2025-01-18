@@ -18,7 +18,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import { sendEmailOTP, verifySecret } from "@/lib/action/user.actions";
+import { sendEmailOTP, verifySecret } from "@/lib/actions/user.actions";
 
 import { Button } from "./ui/button";
 
@@ -49,7 +49,7 @@ const OTPModal = ({
   };
 
   const handleResendOtp = async () => {
-   await sendEmailOTP({ email });
+    await sendEmailOTP({ email });
   };
 
   return (

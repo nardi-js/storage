@@ -1,9 +1,6 @@
 "use server";
 
-import { error } from "console";
-import path from "path";
 
-import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { ID, Query } from "node-appwrite";
@@ -135,30 +132,5 @@ export const signOutUser = async () => {
     handleError(error, "Error signing out user");
   } finally {
     redirect("/sign-in");
-  }
-};
-
-export const renameFile = async ({
-  fileId,
-  name,
-  extension,
-  path,
-}: RenameFileProps) => {
-  const { databases } = await createAdminClient();
-
-  try {
-    const newName = `${name}.${extension}`;
-    const updateFile = await databases.updateDocument(
-      appwriteConfig.databaseId,
-      appwriteConfig.filesCollectionId,
-      fileId,
-      {
-        name: newName,
-      }
-    );
-    revalidatePath(path);
-    return parseStringify(updateFile);
-  } catch (error) {
-    handleError(error, "Failed to rename file");
   }
 };

@@ -24,14 +24,16 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { actionsDropdownItems } from "@/constants";
-import { constructDownloadUrl } from "@/lib/utils";
-
-// import { FileDetails, ShareInput } from "@/components/ActionsModalContent";
 import {
-  deleteFile,
   renameFile,
   updateFileUsers,
-} from "@/lib/actions/file.actions";
+  deleteFile,
+} from "@/lib/actions/file.action";
+import { constructDownloadUrl } from "@/lib/utils";
+
+import { FileDetails, ShareInput } from "./ActionsModalContent";
+
+// import { FileDetails, ShareInput } from "@/components/ActionsModalContent";
 
 const ActionDropdown = ({ file }: { file: Models.Document }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

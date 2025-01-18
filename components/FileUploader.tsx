@@ -7,7 +7,7 @@ import { useDropzone } from "react-dropzone";
 
 import { MAX_FILE_SIZE } from "@/constants";
 import { useToast } from "@/hooks/use-toast";
-import { uploadFile } from "@/lib/action/file.action";
+import { uploadFile } from "@/lib/actions/file.action";
 import { cn, convertFileToUrl, getFileType } from "@/lib/utils";
 
 import Thumbnail from "./Thumbnail";
@@ -42,7 +42,7 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
             className: "error-toast",
           });
         }
-        
+
         return uploadFile({ file, ownerId, accountId, path }).then(
           (uploadedFile) => {
             if (uploadedFile) {

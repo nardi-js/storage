@@ -12,7 +12,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { navItems } from "@/constants";
-import { signOutUser } from "@/lib/action/user.actions";
+import { signOutUser } from "@/lib/actions/user.actions";
 import { cn } from "@/lib/utils";
 
 import FileUploader from "./FileUploader";

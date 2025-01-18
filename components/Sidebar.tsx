@@ -36,7 +36,7 @@ const Sidebar = ({ fullName, avatar, email }: props) => {
       </Link>
       <nav className="sidebar-nav">
         <ul className="flex flex-1 flex-col gap-6">
-          {navItems.map(({ url, name, icons }) => (
+          {navItems.map(({ url, name, icon }) => (
             <Link key={name} href={url} className="lg:w-full">
               <li
                 className={cn(
@@ -45,7 +45,7 @@ const Sidebar = ({ fullName, avatar, email }: props) => {
                 )}
               >
                 <Image
-                  src={icons}
+                  src={icon}
                   alt={name}
                   width={24}
                   height={24}
