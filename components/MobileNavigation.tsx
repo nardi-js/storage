@@ -20,7 +20,7 @@ import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 
 interface props {
-  ownerId: string;
+  $id: string;
   email: string;
   fullName: string;
   avatar: string;
@@ -28,7 +28,7 @@ interface props {
 }
 
 const MobileNavigation = ({
-  ownerId,
+  $id: ownerId,
   email,
   fullName,
   avatar,

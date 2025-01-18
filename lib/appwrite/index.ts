@@ -1,6 +1,7 @@
 "use server";
 
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation"
 import { Account, Client, Databases, Storage, Avatars } from "node-appwrite";
 
 import { appwriteConfig } from "./config";
@@ -12,6 +13,9 @@ export const createSeassionClient = async () => {
 
   const session = (await cookies()).get("appwrite-session");
   if (!session || !session.value) throw new Error("No session");
+  if (!session || !session.value) {
+    redirect("/");
+  }
 
   client.setSession(session.value);
 

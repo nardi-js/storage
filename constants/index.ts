@@ -1,34 +1,84 @@
 export const navItems = [
   {
     name: "Dashboard",
-    icons: "assets/icons/dashboard.svg",
+    icon: "/assets/icons/dashboard.svg",
     url: "/",
   },
-
   {
     name: "Documents",
-    icons: "assets/icons/documents.svg",
+    icon: "/assets/icons/documents.svg",
     url: "/documents",
   },
-
   {
     name: "Images",
-    icons: "assets/icons/images.svg",
+    icon: "/assets/icons/images.svg",
     url: "/images",
   },
-
   {
     name: "Media",
-    icons: "assets/icons/video.svg",
+    icon: "/assets/icons/video.svg",
     url: "/media",
   },
-
   {
     name: "Others",
-    icons: "assets/icons/others.svg",
+    icon: "/assets/icons/others.svg",
     url: "/others",
   },
 ];
 
-export const avatarPlaceholderUrl =
-  "https://cdn1.iconfinder.com/data/icons/random-115/24/person-512.png";
+export const actionsDropdownItems = [
+  {
+    label: "Rename",
+    icon: "/assets/icons/edit.svg",
+    value: "rename",
+  },
+  {
+    label: "Details",
+    icon: "/assets/icons/info.svg",
+    value: "details",
+  },
+  {
+    label: "Share",
+    icon: "/assets/icons/share.svg",
+    value: "share",
+  },
+  {
+    label: "Download",
+    icon: "/assets/icons/download.svg",
+    value: "download",
+  },
+  {
+    label: "Delete",
+    icon: "/assets/icons/delete.svg",
+    value: "delete",
+  },
+];
+
+export const sortTypes = [
+  {
+    label: "Date created (newest)",
+    value: "$createdAt-desc",
+  },
+  {
+    label: "Created Date (oldest)",
+    value: "$createdAt-asc",
+  },
+  {
+    label: "Name (A-Z)",
+    value: "name-asc",
+  },
+  {
+    label: "Name (Z-A)",
+    value: "name-desc",
+  },
+  {
+    label: "Size (Highest)",
+    value: "size-desc",
+  },
+  {
+    label: "Size (Lowest)",
+    value: "size-asc",
+  },
+];
+
+export const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
