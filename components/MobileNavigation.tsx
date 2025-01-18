@@ -74,7 +74,7 @@ const MobileNavigation = ({
 
           <nav className="mobile-nav">
             <ul className="mobile-nav-list">
-              {navItems.map(({ url, name, icons }) => (
+              {navItems.map(({ url, name, icon }) => (
                 <Link key={name} href={url} className="lg:w-full">
                   <li
                     className={cn(
@@ -83,7 +83,7 @@ const MobileNavigation = ({
                     )}
                   >
                     <Image
-                      src={icons}
+                      src={icon}
                       alt={name}
                       width={24}
                       height={24}
