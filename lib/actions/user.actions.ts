@@ -1,6 +1,5 @@
 "use server";
 
-
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { ID, Query } from "node-appwrite";
@@ -93,17 +92,23 @@ export const verifySecret = async ({
 };
 
 export const getCurrentUser = async () => {
-  const { databases, account } = await createSeassionClient();
-  const result = await account.get();
-  const user = await databases.listDocuments(
-    appwriteConfig.databaseId,
-    appwriteConfig.usersCollectionId,
-    [Query.equal("accountId", result.$id)]
-  );
+  try {
+    const { databases, account } = await createSeassionClient();
 
-  if (user.total <= 0) return null;
+    const result = await account.get();
 
-  return parseStringify(user.documents[0]);
+    const user = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.usersCollectionId,
+      [Query.equal("accountId", result.$id)]
+    );
+
+    if (user.total <= 0) return null;
+
+    return parseStringify(user.documents[0]);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const signInUser = async ({ email }: { email: string }) => {

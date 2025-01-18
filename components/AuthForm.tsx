@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+import OtpModal from "@/components/OTPModal";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -18,8 +19,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { createAccount, signInUser } from "@/lib/actions/user.actions";
-
-import OTPModal from "./OTPModal";
 
 type FormType = "sign-in" | "sign-up";
 
@@ -39,7 +38,6 @@ const AuthForm = ({ type }: { type: FormType }) => {
   const [accountId, setAccountId] = useState(null);
 
   const formSchema = authFormSchema(type);
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -63,11 +61,12 @@ const AuthForm = ({ type }: { type: FormType }) => {
 
       setAccountId(user.accountId);
     } catch {
-      setErrorMessage("Failed to create account, Plese try again");
+      setErrorMessage("Failed to create account. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
+
   return (
     <>
       <Form {...form}>
@@ -75,7 +74,6 @@ const AuthForm = ({ type }: { type: FormType }) => {
           <h1 className="form-title">
             {type === "sign-in" ? "Sign In" : "Sign Up"}
           </h1>
-
           {type === "sign-up" && (
             <FormField
               control={form.control}
@@ -84,14 +82,16 @@ const AuthForm = ({ type }: { type: FormType }) => {
                 <FormItem>
                   <div className="shad-form-item">
                     <FormLabel className="shad-form-label">Full Name</FormLabel>
+
                     <FormControl>
                       <Input
                         placeholder="Enter your full name"
-                        {...field}
                         className="shad-input"
+                        {...field}
                       />
                     </FormControl>
                   </div>
+
                   <FormMessage className="shad-form-message" />
                 </FormItem>
               )}
@@ -105,24 +105,28 @@ const AuthForm = ({ type }: { type: FormType }) => {
               <FormItem>
                 <div className="shad-form-item">
                   <FormLabel className="shad-form-label">Email</FormLabel>
+
                   <FormControl>
                     <Input
-                      placeholder="Enter your e mail"
-                      {...field}
+                      placeholder="Enter your email"
                       className="shad-input"
+                      {...field}
                     />
                   </FormControl>
                 </div>
+
                 <FormMessage className="shad-form-message" />
               </FormItem>
             )}
           />
+
           <Button
             type="submit"
             className="form-submit-button"
             disabled={isLoading}
           >
             {type === "sign-in" ? "Sign In" : "Sign Up"}
+
             {isLoading && (
               <Image
                 src="/assets/icons/loader.svg"
@@ -133,12 +137,14 @@ const AuthForm = ({ type }: { type: FormType }) => {
               />
             )}
           </Button>
+
           {errorMessage && <p className="error-message">*{errorMessage}</p>}
+
           <div className="body-2 flex justify-center">
             <p className="text-light-100">
               {type === "sign-in"
-                ? "Don't have an account"
-                : "Already have an account"}
+                ? "Don't have an account?"
+                : "Already have an account?"}
             </p>
             <Link
               href={type === "sign-in" ? "/sign-up" : "/sign-in"}
@@ -152,7 +158,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
       </Form>
 
       {accountId && (
-        <OTPModal email={form.getValues("email")} accountId={accountId} />
+        <OtpModal email={form.getValues("email")} accountId={accountId} />
       )}
     </>
   );
