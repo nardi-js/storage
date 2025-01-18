@@ -9,7 +9,7 @@ import { useDebounce } from "use-debounce";
 import FormattedDateTime from "@/components/FormattedDateTime";
 import Thumbnail from "@/components/Thumbnail";
 import { Input } from "@/components/ui/input";
-import { getFile } from "@/lib/actions/file.action";
+import { getFiles } from "@/lib/actions/file.action";
 
 const Search = () => {
   const [query, setQuery] = useState("");
@@ -29,7 +29,7 @@ const Search = () => {
         return router.push(path.replace(searchParams.toString(), ""));
       }
 
-      const files = await getFile({ types: [], searchText: debouncedQuery });
+      const files = await getFiles({ types: [], searchText: debouncedQuery });
       setResults(files.documents);
       setOpen(true);
     };
